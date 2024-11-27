@@ -1,0 +1,218 @@
+/* Estilo geral */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    scroll-behavior: smooth;
+  }
+  
+  /* Cabeçalho - Hero Section */
+  header {
+    background: linear-gradient(to right, #3192fa, #8953e0);
+    color: #fff;
+    padding: 100px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    animation: fadeInDown 1.5s;
+  }
+  header p {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    opacity: 0.9;
+  }
+  header a.btn {
+    background-color: #fff;
+    color: #007bff;
+    border: none;
+    transition: all 0.3s ease-in-out;
+  }
+  header a.btn:hover {
+    background-color: #000000;
+    color: #fff;
+    transform: scale(1.1);
+  }
+  
+  /* Sobre Mim */
+  #about {
+    background: linear-gradient(to bottom, #ffffff, #e8f0fd);
+    padding: 60px 20px;
+  }
+  #about img {
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+  }
+  #about img:hover {
+    transform: scale(1.05);
+  }
+  #about p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+  }
+  
+  /* Projetos */
+  #projects {
+    background-color: #f0f8ff;
+    padding: 60px 20px;
+  }
+  #projects h2 {
+    color: #007bff;
+    font-weight: bold;
+  }
+  .card {
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+  }
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  }
+  .card-title {
+    color: #007bff;
+  }
+  
+  /* Habilidades */
+  #skills {
+    background: linear-gradient(to right, #665cec, #5684d3);
+    color: white;
+    padding: 60px 20px;
+    height: 280px;
+  }
+  #skills i {
+    margin-bottom: 10px;
+    font-size: 3rem;
+    color: #fff;
+    transition: transform 0.3s ease-in-out, color 0.3s;
+  }
+  #skills i:hover {
+    transform: scale(1.3);
+    color: #ffdd57;
+  }
+  #skills h5 {
+    margin-top: 40px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  /* Formulário de Contato */
+  #contact {
+    background-color: #333;
+    color: white;
+    padding: 60px 20px;
+  }
+  #contact input, #contact textarea {
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  #contact input:focus, #contact textarea:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  #contact button {
+    background: linear-gradient(to right, #007bff98, #8c5cd8a6);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  #contact button:hover {
+    background: linear-gradient(to right, #6610f2, #007bff);
+    transform: scale(1.1);
+  }
+  
+  /* Rodapé */
+  footer {
+    background-color: #000000;
+    color: #bbb;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 0.9rem;
+  }
+  footer p {
+    margin: 0;
+    color: #666;
+  }
+  footer a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+  footer a:hover {
+    color: #6610f2;
+  }
+  
+  /* Animações */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Seções inicialmente invisíveis */
+.section-hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  /* Seções visíveis */
+  .section-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid transparent; /* Define borda invisível inicial */
+    border-radius: 10px; /* Cantos arredondados */
+    margin: 40px;
+  }
+  
+  .project-card:hover {
+    transform: scale(1.2); /* Expande levemente o card */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Adiciona uma sombra */
+    border-color: rgba(170, 201, 235, 0.5);
+    padding: 10px; 
+    margin-top: 20px;
+  }
+
+  .row.g-4 {
+    gap: 30px; /* Adiciona espaço entre os projetos */
+  }
+  
+  
+  
+  /* Ajuste de transição suave */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
