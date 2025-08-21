@@ -1,20 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meu Portfólio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bruno Piovan — Desenvolvedor</title>
+  <meta name="description" content="Portfólio de Bruno Piovan — Desenvolvedor de Software Júnior. Projetos em Spring Boot, Angular, Java e mais." />
+  <meta name="theme-color" content="#0d0d0d" />
 
-  <link rel="stylesheet" href="styles.css">
+  <!-- Open Graph / Social -->
+  <meta property="og:title" content="Bruno Piovan — Desenvolvedor" />
+  <meta property="og:description" content="Portfólio, projetos e contato." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="imagens/og-cover.jpg" />
+  <meta property="og:url" content="https://seu-dominio.com" />
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+
+  <!-- Fonte -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ================================
+       DESIGN TOKENS
+    ================================ */
+    :root{
+      --primary:#6c63ff;
+      --secondary:#00e0ff;
+      --bg:#0d0d0d;
+      --surface:#111;
+      --text:#f5f5f5;
+      --muted:#b8b8b8;
+      --gradient:linear-gradient(135deg,var(--primary),var(--secondary));
+      --radius:16px;
+      --shadow:0 10px 30px rgba(0,0,0,.35);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+
+    /* Scrollbar */
+    ::-webkit-scrollbar{width:10px}
+    ::-webkit-scrollbar-thumb{background:var(--gradient);border-radius:10px}
+
+    /* ================================
+       NAVBAR
+    ================================ */
+    .navbar{background:rgba(0,0,0,.55)!important;backdrop-filter:blur(12px)}
+    .navbar .navbar-brand{font-weight:800;letter-spacing:.5px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .navbar .nav-link{color:var(--muted)!important;font-weight:500}
+    .navbar .nav-link.active,.navbar .nav-link:hover{color:var(--secondary)!important}
+
+    /* ================================
+       HERO
+    ================================ */
+    .hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;text-align:center;background:radial-gradient(1000px 600px at 10% -10%,rgba(108,99,255,.25),transparent),radial-gradient(1000px 600px at 110% 10%,rgba(0,224,255,.2),transparent),linear-gradient(180deg,#0e0e12 0%,#0a0a0a 100%)}
+    .hero::before{content:"";position:absolute;inset:-30%;background:var(--gradient);filter:blur(120px);opacity:.07;transform:rotate(20deg)}
+    .hero h1{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:800;letter-spacing:.8px}
+    .hero p{max-width:760px;margin:10px auto 0;color:#e8e8e8}
+    .hero .cta{margin-top:28px}
+    .btn-neon{background:var(--gradient);border:none;color:#fff;border-radius:999px;padding:12px 28px;font-weight:700;box-shadow:0 0 0 rgba(0,224,255,0);transition:transform .25s ease,box-shadow .35s ease}
+    .btn-neon:hover{transform:translateY(-2px);box-shadow:0 10px 35px rgba(0,224,255,.35)}
+    .social a{color:#fff;opacity:.9}
+    .social a:hover{opacity:1;transform:translateY(-2px)}
+
+    /* ================================
+       SEÇÕES
+    ================================ */
+    section{padding:100px 0}
+    .section-title{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:clamp(1.8rem,2.8vw,2.5rem);font-weight:800;margin-bottom:40px;text-align:center}
+
+    /* Sobre */
+    .about-img{border-radius:var(--radius);box-shadow:var(--shadow);transition:transform .35s ease,box-shadow .35s ease}
+    .about-img:hover{transform:translateY(-6px);box-shadow:0 15px 45px rgba(0,224,255,.25)}
+
+    /* Projetos */
+    .project-card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;transition:transform .35s ease, box-shadow .35s ease;border:1px solid rgba(255,255,255,.04)}
+    .project-card:hover{transform:translateY(-8px);box-shadow:0 18px 55px rgba(0,224,255,.25)}
+    .project-media{position:relative;overflow:hidden}
+    .project-media img{display:block;width:100%;height:240px;object-fit:cover}
+    .project-body{padding:18px}
+    .project-title{font-weight:700;color:#e7fbff}
+    .project-links .btn{border-radius:999px}
+
+    /* Habilidades */
+    .skill-card{background:var(--surface);border-radius:14px;padding:22px;box-shadow:var(--shadow);height:100%;display:flex;flex-direction:column;align-items:center;gap:12px;border:1px solid rgba(255,255,255,.04);transition:transform .25s ease, box-shadow .25s ease}
+    .skill-card:hover{transform:translateY(-6px);box-shadow:0 16px 45px rgba(108,99,255,.25)}
+    .skill-icon{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:#fff}
+    .skill-icon img{width:40px;height:40px}
+
+    /* Contato */
+    #contact{background:#0c0c0c}
+    #contact .form-control{background:#1a1a1a;border:1px solid rgba(255,255,255,.07);color:#fff;padding:14px 16px;border-radius:12px}
+    #contact .form-control:focus{outline:none;box-shadow:0 0 0 .25rem rgba(0,224,255,.15);border-color:#2ad7ff}
+    #contact input::placeholder,#contact textarea::placeholder{color:#aeb6bf;opacity:1;font-style:italic}
+
+    /* Rodapé */
+    footer{background:#0b0b0b;color:#bdbdbd}
+
+    /* On Scroll */
+    .reveal{opacity:0;transform:translateY(45px);transition:opacity .8s ease,transform .8s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    /* Acessibilidade: movimento reduzido */
+    @media (prefers-reduced-motion:reduce){
+      *{scroll-behavior:auto!important}
+      .reveal{transition:none}
+      .btn-neon{transition:none}
+    }
+  </style>
 </head>
-<body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<body data-bs-spy="scroll" data-bs-target="#navbarNav" data-bs-offset="100">
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">Meu Portfólio</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegação">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -28,258 +133,341 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <!-- Hero Section -->
-<header class="bg-primary text-white text-center py-5 section-hidden">
-    <div class="container">
-      <h1 class="display-4">Olá, eu sou Bruno Piovan</h1>
-      <p class="lead">Desenvolvedor de Software Junior | Estudante de Eng Software | Entusiasta de Tecnologia</p>
-      <a href="#contact" class="btn btn-light btn-lg mt-3">Entre em contato</a>
-  
-      <!-- Links para redes sociais -->
-      <div class="mt-4">
-        <a href="https://www.linkedin.com/in/bruno-piovan/" target="_blank" class="text-white mx-2" aria-label="LinkedIn">
-          <i class="bi bi-linkedin" style="font-size: 2rem;"></i>
-        </a>
-        <a href="https://github.com/Brunohpiovan" target="_blank" class="text-white mx-2" aria-label="GitHub">
-          <i class="bi bi-github" style="font-size: 2rem;"></i>
-        </a>
+  <!-- HERO -->
+  <header class="hero d-flex align-items-center justify-content-center text-center">
+    <div class="container position-relative">
+      <h1 class="reveal">Olá, eu sou <span style="background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent">Bruno Piovan</span></h1>
+      <p class="lead reveal" style="opacity:.9">Desenvolvedor de Software Júnior • Estudante de Engenharia de Software • Entusiasta de Tecnologia</p>
+      <div class="cta reveal">
+        <a href="#contact" class="btn btn-neon btn-lg"><i class="bi bi-send me-2"></i>Entre em contato</a>
+      </div>
+      <div class="social d-flex gap-3 justify-content-center mt-4 reveal" aria-label="Redes sociais">
+        <a href="https://www.linkedin.com/in/bruno-piovan/" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="bi bi-linkedin fs-2"></i></a>
+        <a href="https://github.com/Brunohpiovan" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github fs-2"></i></a>
       </div>
     </div>
   </header>
-  
 
-  <!-- About Section -->
-  <section id="about" class="py-5 section-hidden">
+  <!-- SOBRE -->
+  <section id="about" class="reveal">
     <div class="container">
-      <h2 class="text-center mb-4">Sobre Mim</h2>
-      <div class="row">
+      <h2 class="section-title">Sobre Mim</h2>
+      <div class="row align-items-center g-4">
         <div class="col-md-6">
-          <img src="imagens/WhatsApp Image 2024-04-18 at 18.44.12.jpeg" class="img-fluid rounded" alt="Sobre mim">
+          <img class="img-fluid about-img" src="imagens/WhatsApp Image 2024-04-18 at 18.44.12.jpeg" alt="Foto de Bruno Piovan" loading="lazy" />
         </div>
         <div class="col-md-6">
-          <p>Olá! Sou um desenvolvedor apaixonado por criar soluções tecnológicas. Tenho experiência em desenvolvimento web, e adoro transformar ideias em produtos digitais incríveis.</p>
-          <p>Minha missão é usar tecnologia para melhorar a vida das pessoas e criar experiências incríveis.</p>
+          <p>Olá! Sou um desenvolvedor apaixonado por criar soluções tecnológicas. Tenho experiência em desenvolvimento web e adoro transformar ideias em produtos digitais. Busco escrever código limpo, escalável e com foco na experiência do usuário.</p>
+          <p>Minha missão é usar tecnologia para melhorar a vida das pessoas, sempre aprendendo e compartilhando conhecimento.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="bg-light py-5 section-hidden">
+  <!-- PROJETOS -->
+  <section id="projects" class="reveal">
     <div class="container">
-      <h2 class="text-center mb-4">Projetos</h2>
+      <h2 class="section-title">Projetos</h2>
       <div class="row g-4">
-  
         <!-- Projeto 1 -->
-        <div class="col-md-4 section-hidden">
-          <div class="project-card">
-              <div id="carouselExample1" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <!-- Primeira Imagem -->
-                  <div class="carousel-item active">
-                    <img src="imagens/cadastro tecnicos.png" class="d-block w-100" alt="Imagem 1 do Projeto 1">
-                  </div>
-                  <!-- Segunda Imagem -->
-                  <div class="carousel-item">
-                    <img src="imagens/chamados.png" class="d-block w-100" alt="Imagem 2 do Projeto 1">
-                  </div>
-                  <!-- Terceira Imagem -->
-                  <div class="carousel-item">
-                    <img src="imagens/login.png" class="d-block w-100" alt="Imagem 3 do Projeto 1">
-                  </div>
-                </div>
-                <!-- Controles do Carrossel -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample1" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Anterior</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample1" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Próximo</span>
-                </button>
+      <div class="col-md-6 col-lg-4">
+      <article class="project-card h-100">
+        <div class="project-media">
+          <!-- Carrossel -->
+          <div id="carouselExample1" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+              <!-- Primeira Imagem -->
+              <div class="carousel-item active">
+                <img src="imagens/cadastro tecnicos.png" class="d-block w-100" alt="Tela cadastro técnicos do sistema empresarial" loading="lazy">
               </div>
-              <div class="card-body">
-                <h5 class="card-title mt-3">Sistema empresarial</h5>
-                <p class="card-text">Sistema empresarial desenvolvido em Spring Boot e Angular.</p>
-                <a href="https://github.com/Brunohpiovan/helpdesk-backend" target="_blank" class="btn btn-primary">Ver mais</a>
+              <!-- Segunda Imagem -->
+              <div class="carousel-item">
+                <img src="imagens/chamados.png" class="d-block w-100" alt="Tela de chamados do sistema empresarial" loading="lazy">
               </div>
+              <!-- Terceira Imagem -->
+              <div class="carousel-item">
+                <img src="imagens/login.png" class="d-block w-100" alt="Tela de login do sistema empresarial" loading="lazy">
+              </div>
+            </div>
+            <!-- Controles -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample1" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample1" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Próximo</span>
+            </button>
           </div>
         </div>
-  
+
+        <!-- Conteúdo do card -->
+        <div class="project-body">
+          <h3 class="project-title h5 mb-2">Sistema empresarial</h3>
+          <p class="mb-3 text-secondary">
+            Aplicação full stack com Spring Boot e Angular para gestão de chamados e cadastros.
+          </p>
+          <div class="project-links d-flex gap-2">
+            <a class="btn btn-outline-light btn-sm" href="https://github.com/Brunohpiovan/helpdesk-backend" target="_blank" rel="noopener">
+              <i class="bi bi-github me-1"></i>Back-end
+            </a>
+            <a class="btn btn-outline-light btn-sm" href="https://github.com/Brunohpiovan/helpdesk-front" target="_blank" rel="noopener">
+              <i class="bi bi-github me-1"></i>Front-end
+            </a>
+          </div>
+        </div>
+      </article>
+    </div>
+
         <!-- Projeto 2 -->
-        <div class="col-md-4 section-hidden">
-          <div class="project-card">
-              <div id="carouselExample2" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                  <!-- Primeira Imagem -->
-                  <div class="carousel-item active">
-                    <img src="imagens/teste1.png" class="d-block w-100" alt="Imagem 1 do Projeto 2">
-                  </div>
-                  <!-- Segunda Imagem -->
-                  <div class="carousel-item">
-                    <img src="imagens/teste2.png" class="d-block w-100" alt="Imagem 2 do Projeto 2">
-                  </div>
-                  <!-- Terceira Imagem -->
-                  <div class="carousel-item">
-                    <img src="imagens/teste3.png" class="d-block w-100" alt="Imagem 3 do Projeto 2">
-                  </div>
-                </div>
-                <!-- Controles do Carrossel -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample2" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Anterior</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselExample2" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Próximo</span>
-                </button>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title mt-3">Chat-live</h5>
-                <p class="card-text">Projeto de chat ao vivo,desenvolvido em Spring-boot.</p>
-                <a href="https://github.com/Brunohpiovan/chat-live" target="_blank" class="btn btn-primary">Ver mais</a>
-              </div>
-              
+<div class="col-md-6 col-lg-4 section-hidden">
+  <article class="project-card h-100">
+    <div class="project-media">
+      <!-- Carrossel de imagens -->
+      <div id="carouselExample2" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner rounded-3 overflow-hidden">
+          <!-- Primeira Imagem -->
+          <div class="carousel-item active">
+            <img src="imagens/teste1.png" class="d-block w-100" alt="Imagem 1 do Projeto Chat-live">
+          </div>
+          <!-- Segunda Imagem -->
+          <div class="carousel-item">
+            <img src="imagens/teste2.png" class="d-block w-100" alt="Imagem 2 do Projeto Chat-live">
+          </div>
+          <!-- Terceira Imagem -->
+          <div class="carousel-item">
+            <img src="imagens/teste3.png" class="d-block w-100" alt="Imagem 3 do Projeto Chat-live">
           </div>
         </div>
-  
+
+        <!-- Controles do Carrossel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample2" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample2" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Próximo</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="project-body">
+      <h3 class="project-title h5 mb-2">Chat-live</h3>
+      <p class="mb-3 text-secondary">
+        Projeto de chat em tempo real desenvolvido em <strong>Spring Boot</strong>, 
+        com foco em escalabilidade e troca de mensagens.
+      </p>
+      <div class="project-links d-flex gap-2">
+        <a class="btn btn-outline-light btn-sm" href="https://github.com/Brunohpiovan/chat-live" target="_blank" rel="noopener">
+          <i class="bi bi-github me-1"></i>Repositório
+        </a>
+      </div>
+    </div>
+  </article>
+</div>
+
+        <!-- Espaço para mais projetos -->
+        <div class="col-md-6 col-lg-4">
+          <article class="project-card h-100 d-flex align-items-center justify-content-center" style="min-height:240px">
+            <div class="text-center p-4">
+              <i class="bi bi-plus-circle-dotted fs-1 d-block mb-2"></i>
+              <p class="mb-2">Quer ver mais? Em breve novos cases 👇</p>
+              <a href="https://github.com/Brunohpiovan" class="btn btn-neon btn-sm" target="_blank" rel="noopener">Ver GitHub</a>
+            </div>
+          </article>
+        </div>
       </div>
     </div>
   </section>
-  
- <!-- Skills Section -->
-<section id="skills" class="py-5 section-hidden">
+
+  <!-- HABILIDADES -->
+  <section id="skills" class="reveal">
     <div class="container">
-      <h2 class="text-center mb-4">Minhas Habilidades</h2>
-      <div class="row text-center g-3">
-        <!-- Skill 1 -->
-        <div class="col-md-3">
+      <h2 class="section-title">Minhas Habilidades</h2>
+      <div class="row g-3 text-center">
+        <!-- Cada card -->
+        <div class="col-6 col-md-3">
           <div class="skill-card">
-            <div class="icon-container">
-              <img src="./imagens/web-development.png" alt="Desenvolvimento Web">
-            </div>
-            <h5 class="mt-3">Desenvolvimento Web</h5>
+            <div class="skill-icon"><img src="imagens/web-development.png" alt="Ícone desenvolvimento web" loading="lazy"></div>
+            <h5 class="m-0">Desenvolvimento Web</h5>
           </div>
         </div>
-  
-        <!-- Skill 2 -->
-        <div class="col-md-3">
+        <div class="col-6 col-md-3">
           <div class="skill-card">
-            <div class="icon-container">
-              <img src="./imagens/java.png" alt="Java">
-            </div>
-            <h5 class="mt-3">Java</h5>
+            <div class="skill-icon"><img src="imagens/java.png" alt="Ícone Java" loading="lazy"></div>
+            <h5 class="m-0">Java</h5>
           </div>
         </div>
-  
-        <!-- Skill 3 -->
-        <div class="col-md-3">
+        <div class="col-6 col-md-3">
           <div class="skill-card">
-            <div class="icon-container">
-              <img src="./imagens/angular.png" alt="Angular">
-            </div>
-            <h5 class="mt-3">Angular</h5>
+            <div class="skill-icon"><img src="imagens/angular.png" alt="Ícone Angular" loading="lazy"></div>
+            <h5 class="m-0">Angular</h5>
           </div>
         </div>
-  
-        <!-- Skill 4 -->
-        <div class="col-md-3">
+        <div class="col-6 col-md-3">
           <div class="skill-card">
-            <div class="icon-container">
-              <img src="./imagens/spring.png" alt="Spring Boot">
-            </div>
-            <h5 class="mt-3">Spring Boot</h5>
+            <div class="skill-icon"><img src="imagens/spring.png" alt="Ícone Spring Boot" loading="lazy"></div>
+            <h5 class="m-0">Spring Boot</h5>
           </div>
         </div>
-        <!-- Skill 6 -->
-        <div class="col-md-3">
-            <div class="skill-card">
-              <div class="icon-container">
-                <img src="./imagens/sql-server.png" alt="Sql">
-              </div>
-              <h5 class="mt-3">SQL</h5>
-            </div>
+        <div class="col-6 col-md-3">
+          <div class="skill-card">
+            <div class="skill-icon"><img src="imagens/sql-server.png" alt="Ícone SQL" loading="lazy"></div>
+            <h5 class="m-0">SQL</h5>
           </div>
-          <!-- Skill 7 -->
-        <div class="col-md-3">
-            <div class="skill-card">
-              <div class="icon-container">
-                <img src="./imagens/js.png" alt="js">
-              </div>
-              <h5 class="mt-3">JavaScript</h5>
-            </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="skill-card">
+            <div class="skill-icon"><img src="imagens/js.png" alt="Ícone JavaScript" loading="lazy"></div>
+            <h5 class="m-0">JavaScript</h5>
           </div>
-          <!-- Skill 7 -->
-          <div class="col-md-3">
-            <div class="skill-card">
-              <div class="icon-container">
-                <img src="./imagens/c.png" alt="c">
-              </div>
-              <h5 class="mt-3">Linguagem C</h5>
-            </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="skill-card">
+            <div class="skill-icon"><img src="imagens/c.png" alt="Ícone linguagem C" loading="lazy"></div>
+            <h5 class="m-0">Linguagem C</h5>
           </div>
-          <!-- Skill 7 -->
-          <div class="col-md-3">
-            <div class="skill-card">
-              <div class="icon-container">
-                <img src="./imagens/git.png" alt="git">
-              </div>
-              <h5 class="mt-3">Git</h5>
-            </div>
+        </div>
+        <div class="col-6 col-md-3">
+          <div class="skill-card">
+            <div class="skill-icon"><img src="imagens/git.png" alt="Ícone Git" loading="lazy"></div>
+            <h5 class="m-0">Git</h5>
           </div>
+        </div>
       </div>
     </div>
   </section>
-  
 
-  <!-- Contact Section -->
-  <section id="contact" class="bg-black text-white py-5 section-hidden">
+  <!-- CONTATO -->
+  <section id="contact" class="reveal">
     <div class="container">
-      <h2 class="text-center mb-4">Entre em Contato</h2>
-      <form id="contact-form">
-        <div class="row g-3">
-          <div class="col-md-6">
-            <input type="text" class="form-control" placeholder="Seu Nome" required>
-          </div>
-          <div class="col-md-6">
-            <input type="email" name="user_email" class="form-control" placeholder="Seu Email" required>
-          </div>
-          <div class="col-12 text-center">
-            <button type="submit" class="btn btn-primary">Enviar</button>
-          </div>
+      <h2 class="section-title">Entre em Contato</h2>
+      <div class="row justify-content-center">
+        <div class="col-lg-7">
+          <form id="contact-form" class="needs-validation" novalidate>
+            <!-- Honeypot anti-spam -->
+            <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label for="name" class="form-label">Seu Nome</label>
+                <input id="name" name="user_name" type="text" class="form-control" placeholder="Ex.: Usuario" required>
+                <div class="invalid-feedback">Informe seu nome.</div>
+              </div>
+              <div class="col-md-6">
+                <label for="email" class="form-label">Seu Email</label>
+                <input id="email" name="user_email" type="email" class="form-control" placeholder="user@email.com" required>
+                <div class="invalid-feedback">Digite um email válido.</div>
+              </div>
+              <div class="col-12 d-grid">
+                <button class="btn btn-neon btn-lg" type="submit"><i class="bi bi-envelope-paper me-2"></i>Enviar</button>
+              </div>
+            </div>
+          </form>
+          <p class="text-center mt-3" style="color:var(--muted)"><small>Ao enviar, você concorda em ser contatado por e-mail.</small></p>
         </div>
-      </form>
+      </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="text-center bg-black text-white py-3">
-    <p>&copy; 2024 Bruno Piovan. Todos os direitos reservados.</p>
+  <footer class="py-4 text-center">
+    <div class="container small">
+      <p class="mb-1">&copy; <span id="year"></span> Bruno Piovan. Todos os direitos reservados.</p>
+      <a class="text-decoration-none" href="#" id="backToTop"><i class="bi bi-arrow-up-circle me-1"></i>Voltar ao topo</a>
+    </div>
   </footer>
+
+  <!-- JSON-LD (SEO) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Bruno Piovan",
+    "url": "https://seu-dominio.com",
+    "sameAs": [
+      "https://github.com/Brunohpiovan",
+      "https://www.linkedin.com/in/bruno-piovan/"
+    ],
+    "jobTitle": "Desenvolvedor de Software"
+  }
+  </script>
 
   <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
   <script>
-    (function() {
-      emailjs.init("SzdJ0M0S67N50r1X2");  // Substitua com seu UserID do EmailJS
-    })();
-  
-    document.getElementById('contact-form').addEventListener('submit', function(event) {
-      event.preventDefault();
-      
-      var form = this;
-      
-      emailjs.sendForm('service_4f6neta', 'template_hh075qu', form)
-        .then(function(response) {
-            alert("Mensagem enviada com sucesso!");
-        }, function(error) {
-            alert("Erro ao enviar a mensagem.");
-        });
+    const EMAILJS_PUBLIC_KEY = "SzdJ0M0S67N50r1X2"; 
+    const EMAILJS_SERVICE_ID = "service_4f6neta";
+    const EMAILJS_TEMPLATE_ID = "template_hh075qu";
 
+    (function(){
+      if (window.emailjs){
+        emailjs.init(EMAILJS_PUBLIC_KEY);
+      }
+    })();
+  </script>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- App JS -->
+  <script>
+    // Ano do rodapé
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Scroll reveal com IntersectionObserver (melhor performance)
+    const io = new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){
+          e.target.classList.add('show');
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.18 });
+
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Scrollspy manual (ativa link da navbar conforme seção)
+    const navLinks = document.querySelectorAll('.navbar .nav-link');
+    const sections = [...navLinks].map(link => document.querySelector(link.getAttribute('href'))).filter(Boolean);
+    const activateLink = (id) => {
+      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('href') === `#${id}`));
+    };
+
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting){ activateLink(entry.target.id); }
+      });
+    }, { rootMargin: "-50% 0px -45% 0px" });
+
+    sections.forEach(sec => spy.observe(sec));
+
+    // Voltar ao topo suave
+    document.getElementById('backToTop').addEventListener('click', (e)=>{
+      e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'});
+    });
+
+    // Validação + envio EmailJS
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      form.classList.add('was-validated');
+      if (!form.checkValidity()) return;
+
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalHtml = submitBtn.innerHTML;
+      submitBtn.disabled = true; submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span> Enviando...';
+
+      try {
+        const result = await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
+        alert('Mensagem enviada com sucesso!');
+        form.reset();
+        form.classList.remove('was-validated');
+      } catch (err){
+        console.error(err);
+        alert('Erro ao enviar. Tente novamente mais tarde.');
+      } finally {
+        submitBtn.disabled = false; submitBtn.innerHTML = originalHtml;
+      }
     });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script type="module" src="rolagem.js"></script>
 </body>
-
 </html>
