@@ -7,26 +7,20 @@
   <meta name="description" content="Portfólio de Bruno Piovan — Desenvolvedor de Software Júnior. Projetos em Spring Boot, Angular, Java e mais." />
   <meta name="theme-color" content="#0d0d0d" />
 
-  <!-- Open Graph / Social -->
   <meta property="og:title" content="Bruno Piovan — Desenvolvedor" />
   <meta property="og:description" content="Portfólio, projetos e contato." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="imagens/og-cover.jpg" />
   <meta property="og:url" content="https://seu-dominio.com" />
 
-  <!-- Bootstrap & Icons -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
 
-  <!-- Fonte -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ================================
-       DESIGN TOKENS
-    ================================ */
     :root{
       --primary:#6c63ff;
       --secondary:#00e0ff;
@@ -43,21 +37,14 @@
     html{scroll-behavior:smooth}
     body{font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
 
-    /* Scrollbar */
     ::-webkit-scrollbar{width:10px}
     ::-webkit-scrollbar-thumb{background:var(--gradient);border-radius:10px}
 
-    /* ================================
-       NAVBAR
-    ================================ */
     .navbar{background:rgba(0,0,0,.55)!important;backdrop-filter:blur(12px)}
     .navbar .navbar-brand{font-weight:800;letter-spacing:.5px;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
     .navbar .nav-link{color:var(--muted)!important;font-weight:500}
     .navbar .nav-link.active,.navbar .nav-link:hover{color:var(--secondary)!important}
 
-    /* ================================
-       HERO
-    ================================ */
     .hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;text-align:center;background:radial-gradient(1000px 600px at 10% -10%,rgba(108,99,255,.25),transparent),radial-gradient(1000px 600px at 110% 10%,rgba(0,224,255,.2),transparent),linear-gradient(180deg,#0e0e12 0%,#0a0a0a 100%)}
     .hero::before{content:"";position:absolute;inset:-30%;background:var(--gradient);filter:blur(120px);opacity:.07;transform:rotate(20deg)}
     .hero h1{font-size:clamp(2.2rem,4vw,3.5rem);font-weight:800;letter-spacing:.8px}
@@ -68,9 +55,6 @@
     .social a{color:#fff;opacity:.9}
     .social a:hover{opacity:1;transform:translateY(-2px)}
 
-    /* ================================
-       SEÇÕES
-    ================================ */
     section{padding:100px 0}
     .section-title{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-size:clamp(1.8rem,2.8vw,2.5rem);font-weight:800;margin-bottom:40px;text-align:center}
 
@@ -102,11 +86,9 @@
     /* Rodapé */
     footer{background:#0b0b0b;color:#bdbdbd}
 
-    /* On Scroll */
     .reveal{opacity:0;transform:translateY(45px);transition:opacity .8s ease,transform .8s ease}
     .reveal.show{opacity:1;transform:none}
 
-    /* Acessibilidade: movimento reduzido */
     @media (prefers-reduced-motion:reduce){
       *{scroll-behavior:auto!important}
       .reveal{transition:none}
@@ -176,20 +158,16 @@
           <!-- Carrossel -->
           <div id="carouselExample1" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">
-              <!-- Primeira Imagem -->
               <div class="carousel-item active">
                 <img src="imagens/cadastro tecnicos.png" class="d-block w-100" alt="Tela cadastro técnicos do sistema empresarial" loading="lazy">
               </div>
-              <!-- Segunda Imagem -->
               <div class="carousel-item">
                 <img src="imagens/chamados.png" class="d-block w-100" alt="Tela de chamados do sistema empresarial" loading="lazy">
               </div>
-              <!-- Terceira Imagem -->
               <div class="carousel-item">
                 <img src="imagens/login.png" class="d-block w-100" alt="Tela de login do sistema empresarial" loading="lazy">
               </div>
             </div>
-            <!-- Controles -->
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample1" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Anterior</span>
@@ -266,6 +244,55 @@
     </div>
   </article>
 </div>
+
+  <div class="col-md-6 col-lg-4 section-hidden">
+    <article class="project-card h-100">
+      <div class="project-media">
+        <div id="carouselExample3" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner rounded-3 overflow-hidden">
+            <!-- Primeira Imagem -->
+            <div class="carousel-item active">
+              <img src="imagens/login1.png" class="d-block w-100" alt="Imagem 1 do Projeto Trust Pay">
+            </div>
+            <!-- Segunda Imagem -->
+            <div class="carousel-item">
+              <img src="imagens/dash.png" class="d-block w-100" alt="Imagem 2 do Projeto Trust Pay">
+            </div>
+            <!-- Terceira Imagem -->
+            <div class="carousel-item">
+              <img src="imagens/dados.png" class="d-block w-100" alt="Imagem 3 do Projeto Trust Pay">
+            </div>
+          </div>
+
+          <!-- Controles do Carrossel -->
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample3" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExample3" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="project-body">
+        <h3 class="project-title h5 mb-2">Trust Pay</h3>
+        <p class="mb-3 text-secondary">
+          Sistema bancário desenvolvido em <strong>Java + Spring boot</strong> e <strong>Angular</strong>.
+          A ideia foi criar uma aplicação parecida com a de um banco real, com foco em organização, boas práticas, segurança e na criação de interfaces modernas e intuitivas, priorizando uma ótima experiência de UI e UX.
+        </p>
+         <div class="project-links d-flex gap-2">
+            <a class="btn btn-outline-light btn-sm" href="https://github.com/Brunohpiovan/trust-pay-backend" target="_blank" rel="noopener">
+              <i class="bi bi-github me-1"></i>Back-end
+            </a>
+            <a class="btn btn-outline-light btn-sm" href="https://github.com/Brunohpiovan/trust-pay-frontend" target="_blank" rel="noopener">
+              <i class="bi bi-github me-1"></i>Front-end
+            </a>
+          </div>
+      </div>
+    </article>
+  </div>
 
         <!-- Espaço para mais projetos -->
         <div class="col-md-6 col-lg-4">
